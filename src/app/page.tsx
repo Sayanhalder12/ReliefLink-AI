@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Bot, ChartColumn, HandHeart, ShieldCheck, UploadCloud } from "lucide-react";
-import { AuthPanel } from "@/components/auth-panel";
+import { AuthPanelNoSSR } from "@/components/auth-panel-no-ssr";
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <AuthPanel />
+      <AuthPanelNoSSR />
 
       <section className="grid gap-4 md:col-span-2 md:grid-cols-4">
         {[

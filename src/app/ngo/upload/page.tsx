@@ -5,7 +5,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { Loader2, UploadCloud } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/contexts/auth-context";
-import { AuthPanel } from "@/components/auth-panel";
+import { AuthPanelNoSSR } from "@/components/auth-panel-no-ssr";
 
 async function fileToBase64(file: File) {
   const arrayBuffer = await file.arrayBuffer();
@@ -26,7 +26,7 @@ export default function UploadPage() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
 
-  if (!user) return <AuthPanel />;
+  if (!user) return <AuthPanelNoSSR />;
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

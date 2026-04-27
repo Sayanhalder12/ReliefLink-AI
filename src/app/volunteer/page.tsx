@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { doc, getDoc, setDoc, getDocs, collection } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/contexts/auth-context";
-import { AuthPanel } from "@/components/auth-panel";
+import { AuthPanelNoSSR } from "@/components/auth-panel-no-ssr";
 import type { Report } from "@/lib/types";
 
 export default function VolunteerPage() {
@@ -50,7 +50,7 @@ export default function VolunteerPage() {
       });
   }, [reports, location, skills]);
 
-  if (!user) return <AuthPanel />;
+  if (!user) return <AuthPanelNoSSR />;
 
   const saveProfile = async () => {
     await setDoc(doc(db, "volunteers", user.uid), {

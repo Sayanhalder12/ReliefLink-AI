@@ -7,7 +7,7 @@ import { AlertTriangle, ArrowUpRight, ClipboardList, MapPin } from "lucide-react
 import { db } from "@/lib/firebase";
 import type { Report } from "@/lib/types";
 import { useAuth } from "@/contexts/auth-context";
-import { AuthPanel } from "@/components/auth-panel";
+import { AuthPanelNoSSR } from "@/components/auth-panel-no-ssr";
 
 export default function NGODashboardPage() {
   const { user } = useAuth();
@@ -27,7 +27,7 @@ export default function NGODashboardPage() {
   );
 
   if (!user) {
-    return <AuthPanel />;
+    return <AuthPanelNoSSR />;
   }
 
   return (
