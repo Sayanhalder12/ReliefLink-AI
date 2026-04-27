@@ -1,65 +1,49 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Bot, ChartColumn, HandHeart, ShieldCheck, UploadCloud } from "lucide-react";
+import { AuthPanel } from "@/components/auth-panel";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="grid gap-6 md:grid-cols-[1.5fr_1fr]">
+      <section className="glass rounded-3xl p-8 sm:p-10">
+        <p className="text-sm uppercase tracking-[0.2em] text-cyan-200">NGO Coordination Platform</p>
+        <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
+          Coordinate relief faster with <span className="text-gradient">ReliefLink AI</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-slate-300">
+          Upload field reports, let Gemini classify urgency, and match skilled volunteers by
+          location in one responsive command center.
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Link href="/ngo" className="rounded-xl bg-cyan-400 px-4 py-2 font-medium text-slate-900">
+            Go to NGO Dashboard
+          </Link>
+          <Link href="/volunteer" className="rounded-xl border border-white/20 px-4 py-2 hover:bg-white/10">
+            Volunteer Dashboard
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+      <AuthPanel />
+
+      <section className="grid gap-4 md:col-span-2 md:grid-cols-4">
+        {[
+          { icon: UploadCloud, title: "Report Intake", text: "Upload text, image, and PDF reports instantly." },
+          { icon: Bot, title: "Gemini Analysis", text: "Auto-summary, urgency scoring, and action recommendations." },
+          { icon: HandHeart, title: "Volunteer Matching", text: "Match volunteers by location and skill overlap." },
+          { icon: ChartColumn, title: "Real-time Analytics", text: "See trends and urgency distribution by area." },
+        ].map((item) => (
+          <article key={item.title} className="glass rounded-2xl p-5">
+            <item.icon className="size-5 text-cyan-200" />
+            <h2 className="mt-3 font-semibold">{item.title}</h2>
+            <p className="mt-2 text-sm text-slate-300">{item.text}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="glass md:col-span-2 rounded-2xl p-6 flex items-center gap-3 text-sm text-slate-300">
+        <ShieldCheck className="size-4 text-emerald-300" />
+        Built with Next.js, Tailwind, Firebase Auth + Firestore, and Gemini API for deployment-ready workflows.
+      </section>
     </div>
   );
 }
