@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ReliefLink AI",
-  description: "NGO volunteer coordination platform powered by Gemini AI",
+  description: "AI-powered crisis coordination for NGOs, volunteers, and real-time emergency response teams.",
 };
 
 export default function RootLayout({
@@ -27,9 +27,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <AuthProvider>
           <AppShell>{children}</AppShell>
         </AuthProvider>

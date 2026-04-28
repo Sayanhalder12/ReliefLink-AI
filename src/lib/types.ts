@@ -12,12 +12,31 @@ export type Report = {
   skillsNeeded: string[];
   createdBy: string;
   createdAt: string;
+  status?: "Pending" | "Assigned" | "Resolved" | "Escalated";
+  priorityScore?: number;
+  volunteersNeeded?: number;
+  assignedVolunteerId?: string;
+  assignedVolunteerName?: string;
+  assignedVolunteerIds?: string[];
+  assignedVolunteerNames?: string[];
+  assignedCount?: number;
 };
 
 export type VolunteerProfile = {
+  id?: string;
   uid: string;
   name: string;
   location: string;
   skills: string[];
   availability: string;
+  phone?: string;
+  status?: "active" | "inactive";
+  createdAt?: string;
+};
+
+export type BroadcastAlert = {
+  id?: string;
+  message: string;
+  createdAt: string;
+  createdBy: string;
 };
