@@ -107,6 +107,8 @@ export default function Home() {
         </GlassCard>
 
         <div className="grid gap-6">
+          <AuthPanelNoSSR />
+
           <GlassCard className="relative overflow-hidden p-6">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-blue-400/10" />
             <div className="relative space-y-4">
@@ -128,8 +130,6 @@ export default function Home() {
               </div>
             </div>
           </GlassCard>
-
-          <AuthPanelNoSSR />
         </div>
       </section>
 
